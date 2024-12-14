@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+const { nextui } = require("@nextui-org/react");
+
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config = {
@@ -9,6 +11,7 @@ const config = {
     "./components/**/*.{ts,tsx}",
     "./ui/**/*.{ts,tsx}",
     "./content/**/*.{md,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   future: {
     hoverOnlyWhenSupported: true,
@@ -140,7 +143,11 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+    nextui(),
+  ],
 } satisfies Config;
 
 export default config;

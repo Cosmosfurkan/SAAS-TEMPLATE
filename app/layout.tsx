@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 
 import { fontGeist, fontHeading, fontSans, fontUrban } from "@/assets/fonts";
+import { NextUIProvider } from "@nextui-org/react";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 
@@ -36,10 +37,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
             enableSystem
             disableTransitionOnChange
           >
-            <ModalProvider>{children}</ModalProvider>
-            <Analytics />
-            <Toaster richColors closeButton />
-            <TailwindIndicator />
+            <NextUIProvider>
+              <ModalProvider>{children}</ModalProvider>
+              <Analytics />
+              <Toaster richColors closeButton />
+              <TailwindIndicator />
+            </NextUIProvider>
           </ThemeProvider>
         </SessionProvider>
       </body>
